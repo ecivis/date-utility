@@ -1,0 +1,46 @@
+{
+    "name":"date-utility",
+    "version":"1.0.0",
+    "author":"Joseph Lamoree",
+    "location":"ecivis/date-utility#v1.0.0",
+    "homepage":"https://github.com/ecivis/date-utility",
+    "documentation":"https://github.com/ecivis/date-utility",
+    "repository":{
+        "type":"git",
+        "URL":"https://github.com/ecivis/date-utility"
+    },
+    "bugs":"https://github.com/ecivis/date-utility/issues",
+    "slug":"date-utility",
+    "shortDescription":"A date conversion and formatting utility.",
+    "description":"This is a ColdBox Module to assist in dealing with dates, especially converting between timezones and formatting for data transfer.",
+    "type":"modules",
+    "dependencies":{},
+    "devDependencies":{
+        "testbox":"^2.4.0+80"
+    },
+    "installPaths":{
+        "testbox":"testbox",
+    },
+    "ignore":[
+        "**/.*",
+        "tests"
+    ],
+    "testbox":{
+        "runner":[
+            {
+                "default":"http://${SERVER_HOST:127.0.0.1}:${SERVER_PORT:59114}/tests/runner.cfm"
+            }
+        ],
+        "labels":"",
+        "reporter":"",
+        "bundles":"",
+        "recurse":true,
+        "directory":"tests.specs",
+        "testBundles":"",
+        "testSuites":"",
+        "testSpecs":"",
+        "verbose":true,
+        "watchDelay":500,
+        "watchPaths":"**.cfc"
+    }
+}
