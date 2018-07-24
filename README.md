@@ -1,5 +1,7 @@
 # Date Utility
 
+[![Master Branch Build Status](https://img.shields.io/travis/ecivis/date-utility/master.svg?style=flat-square&label=master)](https://travis-ci.org/ecivis/date-utility)
+
 This is a ColdBox Module to assist in dealing with dates, especially converting between timezones and formatting for data transfer.
 
 ## Requirements
@@ -41,6 +43,11 @@ dateutil.formatEpochSeconds(1523830577, "UTC", "ISO_8601_ZULU");
 dateutil.formatEpochMillis(1523830577123, "UTC", "ISO_8601_FRACTIONAL_ZULU");
 // Returns "2018-04-15T22:16:17.123Z"
 ```
+
+## Documentation
+
+There are several usage examples in the test spec: `tests/specs/TestDateUtility.cfc`
+API documentation can be generated easily. See `docs/README.md` for instructions.
 
 ## License
 

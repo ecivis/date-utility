@@ -1,4 +1,4 @@
-component {
+component singleton {
 
     /**
     * Helpful for running reports by quarter.
@@ -117,6 +117,9 @@ component {
         }
     }
 
+    /**
+    * Simply get the last day of the month that contains the date specified.
+    */
     public date function getEndOfMonth(required date date) {
         var firstOfThisMonth = createDate(year(arguments.date), month(arguments.date), 1);
         var firstOfNextMonth = dateAdd("m", 1, firstOfThisMonth);
@@ -176,6 +179,20 @@ component {
             ms = (zdt.getLong(cf.INSTANT_SECONDS) * 1000) + zdt.getLong(cf.MILLI_OF_SECOND);
         }
         return ms;
+    }
+
+    /**
+    * Conveniently fetch the number of seconds since the Epoch using the least complicated Java source
+    */
+    public numeric function getCurrentEpochSeconds() {
+        return ceiling(createObject("java", "java.lang.System").currentTimeMillis() / 1000);
+    }
+
+    /**
+    * Conveniently fetch the number of milliseconds since the Epoch using the least complicated Java source
+    */
+    public numeric function getCurrentEpochMillis() {
+        return createObject("java", "java.lang.System").currentTimeMillis();
     }
 
     /**
@@ -277,7 +294,8 @@ component {
             ISO_8601: "uuuu-MM-dd'T'HH:mm:ss",
             ISO_8601_FRACTIONAL: "uuuu-MM-dd'T'HH:mm:ss.SSS",
             ISO_8601_ZULU: "uuuu-MM-dd'T'HH:mm:ss'Z'",
-            ISO_8601_FRACTIONAL_ZULU: "uuuu-MM-dd'T'HH:mm:ss.SSS'Z'"
+            ISO_8601_FRACTIONAL_ZULU: "uuuu-MM-dd'T'HH:mm:ss.SSS'Z'",
+            MSSQL_DATETIME: "uuuu-MM-dd HH:mm:ss.SSS"
         };
         return variables.datetimeFormats;
     }

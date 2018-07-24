@@ -1,8 +1,8 @@
 {
-    "name":"date-utility",
-    "version":"1.0.0",
+    "name":"Date Utility",
+    "version":"1.0.1",
     "author":"Joseph Lamoree",
-    "location":"ecivis/date-utility#v1.0.0",
+    "location":"ecivis/date-utility#v1.0.1",
     "homepage":"https://github.com/ecivis/date-utility",
     "documentation":"https://github.com/ecivis/date-utility",
     "repository":{
@@ -23,7 +23,8 @@
     },
     "ignore":[
         "**/.*",
-        "tests"
+        "tests",
+        "docs"
     ],
     "testbox":{
         "runner":[

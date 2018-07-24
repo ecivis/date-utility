@@ -1,0 +1,7 @@
+{
+    "name":"date-utility-docs",
+    "app":{
+        "cfengine":"adobe@11",
+        "comment":"Adobe ColdFusion 11 is specified because Lucee 5.x has an issue that causes DocBox to misinterpret the CFML return type of 'date'. So, that's fun."
+    }
+}

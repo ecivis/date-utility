@@ -4,9 +4,7 @@ component extends="testbox.system.BaseSpec" {
         describe("The DateUtility component", function () {
 
             beforeEach(function () {
-                var du = getMockBox().prepareMock(new models.DateUtility());
-
-                variables.dateUtility = du;
+                variables.dateUtility = getMockBox().prepareMock(new models.DateUtility());
             });
 
             it("should return the correct week start date", function () {
@@ -130,6 +128,17 @@ component extends="testbox.system.BaseSpec" {
                 expect(variables.dateUtility.formatEpochMillis(1523915426555, "US/Hawaii", "US_DATETIME")).toBe("04/16/2018 11:50:26 AM");
                 expect(variables.dateUtility.formatEpochMillis(1523915426555, "US/Pacific", "US_DATETIME_TZ")).toBe("04/16/2018 2:50:26 PM PDT");
                 expect(variables.dateUtility.formatEpochMillis(1523915426555, "US/Arizona", "US_DATETIME_TZ")).toBe("04/16/2018 2:50:26 PM MST");
+            });
+
+            it("should return the current time properly", function () {
+                expect(variables.dateUtility.getCurrentEpochSeconds()).toBeGT(1532362906);
+                expect(variables.dateUtility.getCurrentEpochMillis()).toBeGT(1532361772773);
+
+            });
+
+            it("should format a value like the default representation of an SQL Server DATETIME", function () {
+                expect(variables.dateUtility.formatEpochSeconds(1523915426, "UTC", "MSSQL_DATETIME")).toBe("2018-04-16 21:50:26.000");
+                expect(variables.dateUtility.formatEpochMillis(1523915426555, "UTC", "MSSQL_DATETIME")).toBe("2018-04-16 21:50:26.555");
             });
 
         });

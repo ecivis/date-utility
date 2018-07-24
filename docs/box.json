@@ -1,0 +1,15 @@
+{
+    "name":"Date Utility Docs",
+    "version":"0.0.0",
+    "slug":"date-utility-docs",
+    "private":true,
+    "dependencies":{
+        "docbox":"^2.2"
+    },
+    "devDependencies":{
+
+    },
+    "installPaths":{
+        "docbox":"docbox"
+    }
+}
