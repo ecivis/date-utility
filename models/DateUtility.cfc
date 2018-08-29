@@ -278,6 +278,47 @@ component singleton {
         return arguments.instant.atZone(zoneId).format(getDatetimeFormatter(arguments.pattern));
     }
 
+    /**
+    * Validate that a string having YYYY-MM-DD format matches a box on the proleptic Gregorian calendar.
+    * @date The date string to validate
+    */
+    public boolean function isValidDate(required string date) {
+        if (len(arguments.date) == 0 || reFind("^[0-9]{4}-[0-9]{2}-[0-9]{2}$", arguments.date) != 1) {
+            return false;
+        }
+        try {
+            createObject("java", "java.time.LocalDate").parse(arguments.date);
+        } catch (any e) {
+            // Expect a DateTimeParseException to be thrown when somebody tries to validate "2018-13-01"
+            return false;
+        }
+        return true;
+    }
+
+    /**
+    * Validate that a string having YYYY-MM-DD HH:nn:ss format matches a box on the proleptic Gregorian calendar
+    * and a position on the wall clock. The datetime may no be valid for a particular time zone. The datetime may
+    * optionally have a milliseconds quantity, e.g. YYYY-MM-DD HH:nn:ss.lll
+    * @datetime The datetime string to validate
+    */
+    public boolean function isValidDatetime(required string datetime) {
+        if (len(arguments.datetime) == 0 || reFind("^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,3})?$", arguments.datetime) != 1) {
+            return false;
+        }
+        var pieces = listToArray(arguments.datetime, " ");
+        if (arrayLen(pieces) != 2) {
+            return false;
+        }
+
+        try {
+            createObject("java", "java.time.LocalDateTime").parse(pieces[1] & "T" & pieces[2]);
+        } catch (any e) {
+            // Expect a DateTimeParseException to be thrown if the input is bogus
+            return false;
+        }
+        return true;
+    }
+
 
     private string function massageDatetime(required string datetime) {
         return reReplaceNoCase(arguments.datetime, "^([-0-9]+)(T| )([.:0-9]+).*$", "\1 \3");

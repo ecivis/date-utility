@@ -1,8 +1,8 @@
 {
     "name":"Date Utility",
-    "version":"1.0.1",
+    "version":"1.0.2",
     "author":"Joseph Lamoree",
-    "location":"ecivis/date-utility#v1.0.1",
+    "location":"ecivis/date-utility#v1.0.2",
     "homepage":"https://github.com/ecivis/date-utility",
     "documentation":"https://github.com/ecivis/date-utility",
     "repository":{
@@ -16,10 +16,10 @@
     "type":"modules",
     "dependencies":{},
     "devDependencies":{
-        "testbox":"^2.4.0+80"
+        "testbox":"^2.8"
     },
     "installPaths":{
-        "testbox":"testbox",
+        "testbox":"testbox/"
     },
     "ignore":[
         "**/.*",
@@ -29,7 +29,7 @@
     "testbox":{
         "runner":[
             {
-                "default":"http://${SERVER_HOST:127.0.0.1}:${SERVER_PORT:59114}/tests/runner.cfm"
+                "default":"/tests/runner.cfm"
             }
         ],
         "labels":"",
@@ -43,5 +43,6 @@
         "verbose":true,
         "watchDelay":500,
         "watchPaths":"**.cfc"
-    }
+    },
+    "packageDirectory":"dateutility"
 }

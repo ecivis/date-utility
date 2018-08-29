@@ -141,6 +141,23 @@ component extends="testbox.system.BaseSpec" {
                 expect(variables.dateUtility.formatEpochMillis(1523915426555, "UTC", "MSSQL_DATETIME")).toBe("2018-04-16 21:50:26.555");
             });
 
+            it("should validate dates and datetimes", function () {
+                expect(variables.dateUtility.isValidDate("2018-01-01")).toBe(true);
+                expect(variables.dateUtility.isValidDate("2018-02-29")).toBe(false);
+                expect(variables.dateUtility.isValidDate("2020-02-29")).toBe(true);
+                expect(variables.dateUtility.isValidDate("2018-06-50")).toBe(false);
+                expect(variables.dateUtility.isValidDate("1929-10-29")).toBe(true);
+                expect(variables.dateUtility.isValidDate("2023-10-29")).toBe(true);
+
+                expect(variables.dateUtility.isValidDatetime("2018-01-01 00:00:00")).toBe(true);
+                expect(variables.dateUtility.isValidDatetime("2018-01-01 00:00:00.000")).toBe(true);
+                expect(variables.dateUtility.isValidDatetime("2018-01-01 25:00:00.000")).toBe(false);
+                expect(variables.dateUtility.isValidDatetime("2018-01-01 1:00")).toBe(false);
+                expect(variables.dateUtility.isValidDatetime("2018-01-01 01:00:00 PM")).toBe(false);
+                expect(variables.dateUtility.isValidDatetime("2018-06-05 14:65:00")).toBe(false);
+                expect(variables.dateUtility.isValidDatetime("1929-10-29 15:00:00")).toBe(true);
+            });
+
         });
     }
 

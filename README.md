@@ -44,6 +44,11 @@ dateutil.formatEpochMillis(1523830577123, "UTC", "ISO_8601_FRACTIONAL_ZULU");
 // Returns "2018-04-15T22:16:17.123Z"
 ```
 
+### Validations
+
+Use `dateutil.isValidDate("2018-06-50")` to see if June 50th, 2018 is valid.
+Similarly, `dateutil.isValidDatetime("2018-06-05 14:65:00")` indicates that 2:65 in the afternoon isn't reasonable.
+
 ## Documentation
 
 There are several usage examples in the test spec: `tests/specs/TestDateUtility.cfc`
